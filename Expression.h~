@@ -1,0 +1,35 @@
+//CSE 335 Spring 2014, Project 3
+//
+//Expression.h - Interface for the composite Boolean expression class.
+
+#ifndef _EXPRESSION_H_
+#define _EXPRESSION_H_
+
+
+class Expression_Operation;
+
+
+class Expression
+{
+public:
+	//Hook for the various Expression_Operation classes to visit the
+	//child Expression types.
+	virtual void Accept(Expression_Operation& visitor) = 0;
+	
+	void Set_left_child(Expression* new_child) = 0;
+	void Set_right_child(Expression* new_child) = 0;
+
+protected:
+	//Top-level constructor/destructor.  At the moment, they don't do
+	//anything.
+	Expression() {}
+	virtual ~Expression() {}
+
+private:
+	//Hide the copy constructor and assignment operator to discourage
+	//people from trying to use them.
+	Expression(const Expression&);
+	const Expression& operator=(const Expression&);
+};
+
+#endif //ndef _EXPRESSION_H_
