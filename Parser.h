@@ -17,19 +17,19 @@ private:
 public:
   Parser(string str):_str(str){};
   virtual void parse(){
-    char c [] = {'~', '>', '=', '&', '|'};
-    char a = NULL;
-    for ( int i = 0; i <= _str.length(); i++) {
+  //  char c [] = {'~', '>', '=', '&', '|'};
+//    char a = NULL;
+/*    for ( int i = 0; i <= _str.length(); i++) {
       c = _str.at(i);
       if ( c == '~' )
       {
 	if ( _str.at(i+1) != c[0]
       }
       cout << c[i] << endl;
-      
+    
     }
     
-
+*/
       
      /* c = _str.at(i);
       switch(c){

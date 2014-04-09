@@ -21,18 +21,20 @@ using std::cout;
 using std::endl;
 
 
-void Print_and_eval(Expression& expr, ostream& out);
-void Run_all_ops(Expression& expr, ostream& out);
-void Run_test_set_one(ostream& out);
-void Run_test_set_two(ostream& out);
-void Run_exhaustive_simplify_test(ostream& out);
+//void Print_and_eval(Expression& expr, ostream& out);
+//void Run_all_ops(Expression& expr, ostream& out);
+//void Run_test_set_one(ostream& out);
+//void Run_test_set_two(ostream& out);
+//void Run_exhaustive_simplify_test(ostream& out);
  
  
 int main(int argc, char** argv)
 {
   Parser p("x & y");
   p.parse();
-  
+  ConcreteBuilder  b;
+  b.addBinaryOperand("&");
+  b.addVariableObj("x");
   
 // 	cout << "TEST SET ONE" << endl;
 // 	cout << "------------" << endl;

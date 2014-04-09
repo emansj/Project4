@@ -111,7 +111,7 @@ Variable.o: Variable.cpp Variable.h Expression.h Expression_Operation.h \
   
 Parser.o: Parser.h AbstractBuilder.h Expression.h Logical_And.h Binary_Operator.h Logical_Not.h Unary_Operator.h Literal.h Variable.h
  
-AbstractBuilder.o: AbstractBuilder.h Expression.h Logical_And.h Binary_Operator.h Logical_Not.h Unary_Operator.h Literal.h Variable.h
+AbstractBuilder.o: AbstractBuilder.h Expression.h Logical_And.h Binary_Operator.h Logical_Not.h Unary_Operator.h Logical_Or.h Equivalence.h Literal.h Variable.h
 
   
 main.o: main.cpp AbstractBuilder.h Expression.h Logical_And.h \

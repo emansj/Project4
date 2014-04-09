@@ -2,18 +2,21 @@
 #define _ABSBUILDER_H_
 
 using namespace std;
-
+#include <iostream> 
 #include <string>
 #include <stack>
 #include "Expression.h"
 #include "Logical_And.h"
 #include "Logical_Not.h"
+#include "Logical_Or.h"
+#include "Equivalence.h"
+#include "Implication.h"
 #include "Literal.h"
 #include "Variable.h"
 
 class AbstractBuilder{
 public:
-  virtual void addParent( Expression* left, Expression* right) = 0;
+  virtual void addParent(/* Expression* left, Expression* right */) = 0;
   virtual void addLiteralObj( string s ) = 0;
   virtual void addVariableObj( string s ) = 0;
   virtual void addUnaryOperand( string s ) = 0;
@@ -24,7 +27,7 @@ private:
   stack <Expression*> _exprTree;
 public:
   ConcreteBuilder() {};
-  virtual void addParent(){  //MISSING LOGIC for addParent
+  virtual void addParent(/*Expression * left, Expression * right*/){  //MISSING LOGIC for addParent
     _exprTree.pop();
     Expression * right = _exprTree.top();
     _exprTree.pop();
@@ -39,16 +42,37 @@ public:
     //parent->SetParent();
     _exprTree.push( parent );
   }
-  virtual void addUnaryOperand(string s){
-    // s should always be ~
-    Expression * e = new Logical_Not();
+  virtual void addUnaryOperand( string s ){
+    char c = s.at(0);
+	Expression * e;
+	switch(c){
+	  case '~':
+		e = new Logical_Not();
+		break;
+	  default:
+	  break;
+	}
     _exprTree.push(e);
   }
-  virtual void addBinaryOperand(string s){
-    //switch (s){
-     // case '&':
-	Expression * e = new Logical_And();
-    //}
+  virtual void addBinaryOperand( string s  ){
+	char c = s.at(0);
+	Expression * e;
+	switch (c){
+      case '&':
+		e = new Logical_And();
+		break;
+	   case '|':
+	   	e = new Logical_Or();
+		break;
+	   case '>':
+	    e = new Implication();
+		break;
+	   case '=':
+	    e = new Equivalence();
+		break;
+	   default:
+	    break;
+    }
     _exprTree.push(e);
   }
   virtual void addLiteralObj(string s){
